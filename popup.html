@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>FaaahGPT</title>
+    <style>
+        :root {
+            --bg: #0a0a0a;
+            --surface: #141414;
+            --border: #2a2a2a;
+            --text: #e8e8e8;
+            --green: #22c55e;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            width: 340px;
+            background: var(--bg);
+            color: var(--text);
+            font-size: 13px;
+            line-height: 1.5;
+            font-family: 'Inter', sans-serif;
+            padding: 20px;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        header h1 {
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+
+        .badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 8px 10px;
+            color: #999;
+            font-size: 12px;
+            margin-bottom: 14px;
+        }
+
+        .badge::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--green);
+            flex-shrink: 0;
+        }
+
+        .badge em {
+            font-style: normal;
+            color: var(--text);
+        }
+
+        .input-row {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 14px;
+        }
+
+        input,
+        button {
+            font-size: 12px;
+            line-height: 1;
+            font-family: 'Inter', sans-serif;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+            padding: 8px 10px;
+            outline: none;
+        }
+
+        input {
+            flex: 1;
+            background: var(--surface);
+            color: var(--text);
+            transition: border-color 0.15s;
+        }
+
+        input::placeholder {
+            color: #444;
+        }
+
+        input:focus {
+            border-color: #444;
+        }
+
+        button#addBtn {
+            background: var(--text);
+            color: var(--bg);
+            border-color: transparent;
+            font-weight: 500;
+            cursor: pointer;
+            padding: 8px 14px;
+            transition: opacity 0.15s;
+        }
+
+        button#addBtn:hover {
+            opacity: 0.85;
+        }
+
+        #phraseList {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .phrase-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 8px 10px;
+            animation: in 0.1s ease;
+        }
+
+        @keyframes in {
+            from {
+                opacity: 0;
+                transform: translateY(-3px);
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .phrase-item span {
+            color: #ccc;
+            flex: 1;
+            word-break: break-word;
+        }
+
+        .delete-btn {
+            background: none;
+            border: none;
+            color: #444;
+            font-size: 14px;
+            cursor: pointer;
+            padding: 0 2px;
+            transition: color 0.15s;
+        }
+
+        .delete-btn:hover {
+            color: #999;
+        }
+
+        .empty {
+            color: #555;
+            font-size: 12px;
+            text-align: center;
+            padding: 12px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>FaaahGPT</h1>
+    </header>
+
+    <div class="badge">Always active: <em>"you are absolutely right"</em></div>
+
+    <div class="input-row">
+        <input type="text" id="phraseInput" placeholder="Add a phrase…" />
+        <button id="addBtn">Add</button>
+    </div>
+
+    <div id="phraseList"></div>
+
+    <script src="popup.js"></script>
+</body>
+
+</html>

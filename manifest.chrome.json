@@ -1,0 +1,46 @@
+{
+    "manifest_version": 3,
+    "name": "FaaahGPT: Faaah for ChatGPT",
+    "version": "1.0.0",
+    "description": "Plays the faaah sound when ChatGPT says your trigger phrases — like \"you are absolutely right\". Add custom phrases from the popup.",
+    "icons": {
+        "16": "icons/logo_16.png",
+        "24": "icons/logo_24.png",
+        "32": "icons/logo_32.png",
+        "48": "icons/logo_48.png",
+        "128": "icons/logo_128.png"
+    },
+    "permissions": [
+        "storage"
+    ],
+    "action": {
+        "default_popup": "popup.html",
+        "default_title": "Faaah Phrases"
+    },
+    "host_permissions": [
+        "https://chatgpt.com/*",
+        "https://www.chatgpt.com/*"
+    ],
+    "content_scripts": [
+        {
+            "js": [
+                "content.js"
+            ],
+            "matches": [
+                "https://chatgpt.com/*",
+                "https://www.chatgpt.com/*"
+            ]
+        }
+    ],
+    "web_accessible_resources": [
+        {
+            "resources": [
+                "audio.mp3"
+            ],
+            "matches": [
+                "https://chatgpt.com/*",
+                "https://www.chatgpt.com/*"
+            ]
+        }
+    ]
+}
